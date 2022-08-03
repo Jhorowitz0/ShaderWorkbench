@@ -6,9 +6,7 @@ uniform float uScroll;
 #define PI 3.14159265359
 
 void main() {
-	vec2 st = gl_FragCoord.xy/uResolution; //Normalize the fragcoord between 0 and 1
+	vec2 st = gl_FragCoord.xy/uResolution;
 
-	vec3 color = vec3(0.5,0.0,1.0);
- 
-	gl_FragColor = vec4(color,1.0); 
+	gl_FragColor = vec4(0.5,0.0,1.0,1.0);
 }
