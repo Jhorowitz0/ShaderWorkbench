@@ -18,8 +18,12 @@
 
     //import help glsl files and append onto fragment shader
     var importedGLSL = "";
-    // importedGLSL += glUtils.SL.Shaders.v1.fileName;
+    importedGLSL += glUtils.SL.Shaders.v1.easing;
+    importedGLSL += glUtils.SL.Shaders.v1.perlin3D;
+    importedGLSL += glUtils.SL.Shaders.v1.utils;
     var fragmentShader_SRC =  "precision mediump float; \n \n" + importedGLSL + "\n \n" + glUtils.SL.Shaders.v1.fragment;
+
+    console.log(fragmentShader_SRC);
 
     // Initialize the shaders and program
     var vertexShader = glUtils.getShader(gl, gl.VERTEX_SHADER, glUtils.SL.Shaders.v1.vertex),
@@ -153,6 +157,27 @@
     return n;
   }
 
+  function HEXtoRGB(hex) {
+    hex = hex.replace(/#/g, '');
+    if (hex.length === 3) {
+        hex = hex.split('').map(function (hex) {
+            return hex + hex;
+        }).join('');
+    }
+  // validate hex format
+    var result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})[\da-z]{0,0}$/i.exec(hex);
+    if (result) {
+        var red = parseInt(result[1], 16);
+        var green = parseInt(result[2], 16);
+        var blue = parseInt(result[3], 16);
+
+        return [red/255, green/255, blue/255];
+    } else {
+      // invalid color
+        return null;
+    }
+  }
+
   //sets canvas size to window
   function resizer() {
     canvas.width = window.innerWidth;
@@ -170,7 +195,25 @@
     //pass in page scroll normalized
     glUtils.uniformFloat1(gl,program,"uScroll",scrollPos);
     //pass in mousepos
-    glUtils.uniformFloat2(gl,program,"uMouse",getMousePos().x/canvas.width,1-(getMousePos().y/canvas.height));
+    glUtils.uniformFloat2(gl,program,"uMouse",getMousePos().x,canvas.height-(getMousePos().y));
+
+    var color1 = HEXtoRGB(document.getElementById("color1").value);
+    glUtils.uniformFloat3(gl,program,"uColor1",color1[0],color1[1],color1[2]);
+
+    var color2 = HEXtoRGB(document.getElementById("color2").value);
+    glUtils.uniformFloat3(gl,program,"uColor2",color2[0],color2[1],color2[2]);
+
+    var color3 = HEXtoRGB(document.getElementById("color3").value);
+    glUtils.uniformFloat3(gl,program,"uColor3",color3[0],color3[1],color3[2]);
+
+    var color4 = HEXtoRGB(document.getElementById("color4").value);
+    glUtils.uniformFloat3(gl,program,"uColor4",color4[0],color4[1],color4[2]);
+
+    glUtils.uniformFloat1(gl,program,"uValue1",document.getElementById('v1').value/100);
+    glUtils.uniformFloat1(gl,program,"uValue2",document.getElementById('v2').value/100);
+    glUtils.uniformFloat1(gl,program,"uValue3",document.getElementById('v3').value/100);
+    glUtils.uniformFloat1(gl,program,"uValue4",document.getElementById('v4').value/100);
+    
   }
 
 })(window || this);

@@ -9,9 +9,34 @@
 body{
     overscroll-behavior: none;
 }
-div{
-    background-color: brown;
+
+form{
+    background-color: rgba(0, 0, 0, 0.365);
+    position:fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    color: white;
+    transition: 0.3s;
+    transform: translateY(88%);
+
 }
+
+form h1{
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+form input{
+    margin-bottom: 10px;
+}
+
+form:hover{
+    transition: 0.3s;
+    transform: translateY(0px);
+    background-color: rgba(0, 0, 0,1);
+}
+
 canvas {
     width:100vw;
     height:100vh;

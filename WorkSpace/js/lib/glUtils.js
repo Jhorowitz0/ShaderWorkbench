@@ -3,12 +3,16 @@
   var glUtils = {
     VERSION : '0.0.4',
     uniformFloat1: function(gl,program,name,value){
-      var uFloat1 = gl.getUniformLocation(program,name);
-      gl.uniform1f(uFloat1,value);
+      var ufloat1 = gl.getUniformLocation(program,name);
+      gl.uniform1f(ufloat1,value);
     },
     uniformFloat2: function(gl,program,name,v1,v2){
       var ufloat2 = gl.getUniformLocation(program,name);
       gl.uniform2f(ufloat2,v1,v2);
+    },
+    uniformFloat3: function(gl,program,name,v1,v2,v3){
+      var ufloat3 = gl.getUniformLocation(program,name);
+      gl.uniform3f(ufloat3,v1,v2,v3);
     },
     checkWebGL: function(canvas) {
       /**
