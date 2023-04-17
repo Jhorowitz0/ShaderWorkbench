@@ -217,16 +217,11 @@
     var color2 = HEXtoRGB(document.getElementById("color2").value);
     glUtils.uniformFloat3(gl,program,"uColor2",color2[0],color2[1],color2[2]);
 
-    var color3 = HEXtoRGB(document.getElementById("color3").value);
-    glUtils.uniformFloat3(gl,program,"uColor3",color3[0],color3[1],color3[2]);
-
-    var color4 = HEXtoRGB(document.getElementById("color4").value);
-    glUtils.uniformFloat3(gl,program,"uColor4",color4[0],color4[1],color4[2]);
-
     glUtils.uniformFloat1(gl,program,"uValue1",document.getElementById('v1').value/100);
     glUtils.uniformFloat1(gl,program,"uValue2",document.getElementById('v2').value/100);
     glUtils.uniformFloat1(gl,program,"uValue3",document.getElementById('v3').value/100);
     glUtils.uniformFloat1(gl,program,"uValue4",document.getElementById('v4').value/100);
+    glUtils.uniformFloat1(gl,program,"uValue5",document.getElementById('v5').value/100);
     
   }
 

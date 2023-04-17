@@ -6,19 +6,18 @@ uniform float uScroll;    //page scroll height
 //input variables
 uniform vec3 uColor1;
 uniform vec3 uColor2;
-uniform vec3 uColor3;
-uniform vec3 uColor4;
 uniform float uValue1;
 uniform float uValue2;
 uniform float uValue3;
 uniform float uValue4;
+uniform float uValue5;
 
 #define PI 3.14159265359
 
 void main() {
 	vec2 st = gl_FragCoord.xy; // I work mostly at pixel scale for web elements
 
-	float rectangle = rect(st,uResolution/2.0,vec2(100.0,uValue3*500.0),uValue4*100.);
+	float rectangle = rect(st,uResolution/2.0,vec2(uValue4*600.0+100.0,uValue3*500.0),uValue5*100.);
 	
 	st*=0.01;
 	float noise = perlin3D(vec3(st,uTime*uValue2));

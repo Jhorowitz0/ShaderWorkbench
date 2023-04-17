@@ -1,0 +1,3 @@
+Date Finished 4-17-2023
+
+Description: A basic resizable pill/rectangle with adjustable animated noise ribbons within. An exercise in manipulating variables+uploading libraries to a glsl file and showcasing shaders on a webpage. 
