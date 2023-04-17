@@ -21,9 +21,10 @@
 
     //import help glsl files and append onto fragment shader
     var importedGLSL = "";
+    importedGLSL += glUtils.SL.Shaders.v1.utils;
     importedGLSL += glUtils.SL.Shaders.v1.easing;
     importedGLSL += glUtils.SL.Shaders.v1.perlin3D;
-    importedGLSL += glUtils.SL.Shaders.v1.utils;
+    importedGLSL += glUtils.SL.Shaders.v1.worley3D;
     var fragmentShader_SRC =  "precision mediump float; \n \n" + importedGLSL + "\n \n" + glUtils.SL.Shaders.v1.fragment;
     // Initialize the shaders and program
     var vertexShader = glUtils.getShader(gl, gl.VERTEX_SHADER, glUtils.SL.Shaders.v1.vertex),
